@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
-const Landing = () => {
+const Services = () => {
   return (
     <div>
-      <Navbar/>
+        <Navbar/>
+        <h1>Services</h1>
     </div>
   )
 }
 
-export default Landing
+export default Services

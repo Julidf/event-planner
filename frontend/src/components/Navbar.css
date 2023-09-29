@@ -1,0 +1,23 @@
+.navbar-container {
+    /* background-color: rgb(26, 26, 26); */
+    background-color: #27374D;
+    height: 8vh;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}   
+
+a {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+a.active {
+    color: #4A55A2;
+}
+a:hover {
+    color: #4A55A2;
+    transition: all .1s ease-in-out;
+}

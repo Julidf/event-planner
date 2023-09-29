@@ -1,0 +1,17 @@
+.landing-container {
+    height: 100%;
+}
+
+.banner {
+    height: 35vh;
+    width: 100%;
+    background-color: #666666;
+}
+
+.banner-inner {
+    margin-inline: 15vw;
+    padding: 20px;
+    text-align: left;
+}
+
+
