@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from './pages/home/Landing';
 import About from './pages/About';
 import Services from './pages/Services';
+import "./App.css"
 
 function App() {
   return (

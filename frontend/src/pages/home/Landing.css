@@ -1,17 +1,52 @@
+
 .landing-container {
     height: 100%;
 }
 
 .banner {
-    height: 35vh;
-    width: 100%;
-    background-color: #666666;
+    height: 25rem;
+    width: 100vw;
+    background-color: #3f3f3f;
+    /* background-image: url('https://images.squarespace-cdn.com/content/v1/56a60592c21b866082d56892/1611847315317-0MXT9UUQ824LDMI17DYX/hall+de+entrada+sala+leds+1+%281%29.JPG'); */
 }
 
 .banner-inner {
-    margin-inline: 15vw;
-    padding: 20px;
-    text-align: left;
+    margin-inline: var(--primary-margin);
+    display: flex;
+    height: 100%;
 }
+
+.banner-text {
+    max-width: 50vw;
+    color: white;
+    text-align: left;
+    padding: 20px 0;
+    margin: 4rem 0;
+
+    & h2 {
+        margin-bottom: 35px;
+    }
+
+    & p {
+        margin-bottom: 5px;
+    }
+
+}
+
+.banner-picture {
+    margin: 4rem 0;
+    width: 50vw;
+    justify-content: center;
+    display: flex;
+
+    & img {
+        margin-top: 25px;
+        width: auto;
+        height: auto;
+    }
+}
+
+
+
 
 

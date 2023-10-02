@@ -1,23 +1,65 @@
 .navbar-container {
-    /* background-color: rgb(26, 26, 26); */
     background-color: #27374D;
     height: 8vh;
-    margin-inline: auto;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    font-weight: bold;
 }   
 
-a {
-    text-decoration: none;
-    padding: 10px;
-    color: white;
+.navbar-buttons {
+    margin-left: auto;
+    gap: 50px;
+    column-gap: 50px;
+
+    & a {
+        padding: 10px;
+        color: white;
+        margin-right: 15px;
+    }
+    & a.active {
+        color: #4A55A2;
+    }
+    & a:hover {
+        color: #4A55A2;
+        transition: all .1s ease-in-out;
+    }
 }
-a.active {
-    color: #4A55A2;
+
+.navbar-auth {
+    margin-left: auto;
+    margin-right: var(--primary-margin);
+
+    .auth-button {
+        padding: 6px 30px;
+        border-radius: 25px;
+        color: white;
+    }
+    
+    & .login {
+        margin-right: 1rem;
+        background-color: #666666;
+    }
+
+    & .register{
+        background-color: #444444;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    :hover {
+        transition: all .2s ease-in-out;
+        background-color: #999999;
+        cursor: pointer;
+    }
 }
-a:hover {
-    color: #4A55A2;
-    transition: all .1s ease-in-out;
+
+.navbar-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: var(--primary-margin);;
+    
+    & img {
+        max-width: 100%
+    }
 }

@@ -9,12 +9,19 @@ const Landing = () => {
       <div className='landing-container'>
         <div className='banner'>
           <div className='banner-inner'>
-            <h3>
-              Tu solución definitiva para la planificación de eventos memorables.
-            </h3>
-            <p>
-              Encontrá tu solución ideal entre los prestadores registrados!
-            </p>
+            <div className='banner-text'>
+              <h3>
+                La solución definitiva para la planificación de eventos memorables.
+              </h3>
+              <h2>
+                A tu alcance.
+              </h2>
+              <p>¡Crea Eventos Memorables con Facilidad! </p>
+              <p>Descubre, Planifica y Disfruta con Nosotros.</p>
+            </div>
+            <div className='banner-picture'>
+              <img src='image-banner2.png'/>
+            </div>
           </div>
         </div>
       </div>
