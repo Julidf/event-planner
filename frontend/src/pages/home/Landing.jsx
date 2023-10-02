@@ -20,7 +20,7 @@ const Landing = () => {
               <p>Descubre, Planifica y Disfruta con Nosotros.</p>
             </div>
             <div className='banner-picture'>
-              <img src='image-banner2.png'/>
+              <img src='image-banner2.png' alt='Banner'/>
             </div>
           </div>
         </div>

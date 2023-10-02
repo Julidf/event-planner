@@ -7,7 +7,7 @@ Botones: #333333
 
 Colores secundarios:
 
-Accento: #00ff00
+Accento: #00ff00 malardo este color 
 Secundario: #666666
 Neutral: #999999
 
