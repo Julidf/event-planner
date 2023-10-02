@@ -5,9 +5,10 @@
 
 .banner {
     height: 25rem;
-    width: 100vw;
+    width: 100%;
     background-color: #3f3f3f;
-    /* background-image: url('https://images.squarespace-cdn.com/content/v1/56a60592c21b866082d56892/1611847315317-0MXT9UUQ824LDMI17DYX/hall+de+entrada+sala+leds+1+%281%29.JPG'); */
+    display: flex;
+
 }
 
 .banner-inner {
@@ -20,7 +21,6 @@
     max-width: 50vw;
     color: white;
     text-align: left;
-    padding: 20px 0;
     margin: 4rem 0;
 
     & h2 {
@@ -40,7 +40,7 @@
     display: flex;
 
     & img {
-        margin-top: 25px;
+        min-height: 100%;
         width: auto;
         height: auto;
     }
