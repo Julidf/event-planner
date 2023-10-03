@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/navbar/Navbar'
 import "./landing.css"
 
 const Landing = () => {
@@ -20,7 +20,7 @@ const Landing = () => {
               <p>Descubre, Planifica y Disfruta con Nosotros.</p>
             </div>
             <div className='banner-picture'>
-              <img src='image-banner2.png' alt='Banner'/>
+              <img src='images/image-banner2.png' alt='Banner'/>
             </div>
           </div>
         </div>

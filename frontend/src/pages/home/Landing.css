@@ -23,13 +23,21 @@
     width: 50%;
     color: white;
     text-align: left;
+    
+    & h3 {
+        font-size: 39px;
+        font-weight: 400;
+    }
 
     & h2 {
         margin-bottom: 35px;
+        font-size: 47px;
+        font-weight: 500;
     }
 
     & p {
         margin-bottom: 5px;
+        font-size: 23px;
     }
 }
 
@@ -39,7 +47,9 @@
     display: flex;
 
     & img {
-        width: 40%;
+        max-height: 100%;
+        max-width: 100%;
+        width: 60%;
         height: 100%;
     }
 }
