@@ -1,3 +1,5 @@
+Le pregunté a chatGPT que me de una paleta de colores para una app en modo oscuro
+
 Colores primarios:
 
 Fondo: #222222
