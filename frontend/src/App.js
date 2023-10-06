@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from './pages/home/Landing';
-import About from './pages/About';
-import Services from './pages/services/Services';
-import Login from "./pages/authentication/Login";
-import Register from "./pages/authentication/Register";
+import Landing from './views/home/Landing';
+import About from './views/about/About';
+import Services from './views/services/Services';
+import Login from "./views/authentication/Login";
+import Register from "./views/authentication/Register";
 import "./App.css"
 
 function App() {
