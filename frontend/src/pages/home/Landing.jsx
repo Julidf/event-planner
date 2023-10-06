@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/Navbar'
 import ServiceCard from './ServiceCard'
 import "./landing.css"
 import Footer from '../../components/footer/Footer'
+import { Divider } from '@mui/material'
 
 const Landing = () => {
 
@@ -14,12 +15,12 @@ const Landing = () => {
 
   const getProductList = () => {
     const services = [
-      {name: "Música", description: "Aguante la música loco rock and roll, reggae, etc"},
-      {name: "Salón de fiestas", description: "Salones de fiesta para organizar la party!"},
-      {name: "Fotógrafo", description: "Para las fotos de Ig necesitás un fotógrafo"},
-      {name: "Catering", description: "Como dice el refrán panza llena, coso"},
-      {name: "Estética", description: "No me queda muy claro que es estética, pero hay estética"},
-      {name: "Bartender", description: "Barra libre etc" }
+      {name: "Música", description: "Aguante la música loco rock and roll, reggae, etc", image: "https://img.freepik.com/foto-gratis/disparo-gran-angular-solo-arbol-que-crece-cielo-nublado-puesta-sol-rodeada-cesped_181624-22807.jpg"},
+      {name: "Salón de fiestas", description: "Salones de fiesta para organizar la party!", image: "https://www.dzoom.org.es/wp-content/uploads/2010/09/paisaje-profundidad-lineas-734x489.jpg"},
+      {name: "Fotógrafo", description: "Para las fotos de Ig necesitás un fotógrafo", image: "https://www.lowi.es/blog/wp-content/uploads/2018/05/Blog_32.jpeg"},
+      {name: "Catering", description: "Como dice el refrán panza llena, coso", image: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"},
+      {name: "Estética", description: "No me queda muy claro que es estética, pero hay estética", image: "https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg"},
+      {name: "Bartender", description: "Barra libre etc", image: "https://img.freepik.com/fotos-premium/fantastica-vista-cascada-kirkjufellsfoss-cerca-montana-kirkjufell-al-atardecer_761071-868.jpg"}
     ]
     setServicesList(services)
   };
@@ -45,6 +46,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <Divider sx={{borderColor: "white", borderWidth:"1px", marginX: "15vw"}}/>
         <div className='services-list-container'>
           <div className='services-list-inner'>
             <div className='services-title'>
@@ -55,6 +57,7 @@ const Landing = () => {
               ? servicesList.map((service, idx) => <ServiceCard key={idx} {...service} />)
               : <h1>Loading services...</h1>}
             </div>
+            <Divider sx={{borderColor: "white", borderWidth:"1px", marginX: "15vw"}}/>
           </div>
         </div>
         <div className='explanation-container'>

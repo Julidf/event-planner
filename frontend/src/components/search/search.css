@@ -1,0 +1,24 @@
+.services-container {
+    margin-inline: var(--primary-margin);
+
+}
+
+.services-searcher {
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 30rem;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    background: none;
+    padding: 16.5px 14px;
+}
+
+input:focus {
+    outline-color: white;
+}

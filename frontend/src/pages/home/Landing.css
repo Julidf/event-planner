@@ -21,7 +21,7 @@
 }
 
 .banner-text {
-    width: 50%;
+    width: 67%;
     color: white;
     text-align: left;
     
@@ -43,14 +43,14 @@
 }
 
 .banner-picture {
-    width: 50%;
+    width: 33%;
     justify-content: center;
     display: flex;
 
     & img {
         max-height: 100%;
         max-width: 100%;
-        width: 60%;
+        width: 6    0%;
         height: 100%;
     }
 }
@@ -61,7 +61,7 @@
 }
 
 .services-list-cards {
-    /* margin-inline: var(--primary-margin); */
+    margin-inline: var(--primary-margin);
     margin-block: 4rem;
     color: #ffffff;
     display: grid;

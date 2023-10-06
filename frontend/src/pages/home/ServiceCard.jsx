@@ -6,14 +6,14 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import "./serviceCard.css"
 
-const ServiceCard = ({name, description}) => {
+const ServiceCard = ({name, description, image}) => {
   return (
     <Card sx={{ maxWidth: 345, marginBottom: 8, borderRadius:5 }}>
         <CardActionArea sx={{}}>
         <CardMedia
             component="img"
             height="140"
-            image="/contemplative-reptile.jpg"
+            image={image}
             alt="green iguana"
         />
         <CardContent>
