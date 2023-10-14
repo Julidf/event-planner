@@ -12,21 +12,18 @@ const Navbar = () => {
       </div>
       <div className='navbar-buttons'>
           <NavLink to={"/"}>
-            Home
+            Menú
           </NavLink>
           <NavLink to={"/services"}>
-            Services
+            Servicios
           </NavLink>
-          <NavLink to={"/about"}>
-            About
+          <NavLink to={"/about"} style={{marginLeft: '-10px'}}>
+            Sobre Nosotros
           </NavLink>
       </div>
-      <div className='navbar-auth'>
+      <div className='navbar-auth'>        
         <Link to={"/login"} className='auth-button login'>
-          Iniciar sesión
-        </Link>
-        <Link to={"/register"} className='auth-button register'>
-          Registrarse
+          👤ㅤMi Cuenta
         </Link>
       </div>
     </div>
