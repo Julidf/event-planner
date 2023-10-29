@@ -3,7 +3,6 @@ import Landing from './views/home/Landing';
 import About from './views/about/About';
 import Services from './views/services/Services';
 import Login from "./views/authentication/Login";
-import Register from "./views/authentication/Register";
 import "./App.css"
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
           <Route path="/about" Component={About} />
           <Route path="/services" Component={Services} />
           <Route path="/login" Component={Login} />
-          <Route path="/register" Component={Register} />
       </Routes>
     </BrowserRouter>
   );

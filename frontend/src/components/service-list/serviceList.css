@@ -1,0 +1,22 @@
+.services-list-container {
+    width: 100%;
+}
+
+.services-list-cards {
+    margin-inline: var(--primary-margin);
+    margin-block: 4rem;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+.services-title {
+    margin-block: 4rem 0;
+    display: flex;
+    justify-content: center;
+    
+    & h1 {
+        color: white;
+    }
+}
