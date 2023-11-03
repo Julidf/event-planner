@@ -9,10 +9,12 @@ const servicesData = [
 // Función para insertar los datos
 const seedServices = async () => {
     try {
-      await Service.insertMany(servicesData);
-      console.log('Datos de servicios insertados con éxito');
+        await Service.deleteMany({});
+        console.log('Servicios existentes eliminados con éxito.');
+        await Service.insertMany(servicesData);
+        console.log('Datos de servicios insertados con éxito');
     } catch (error) {
-      console.error('Error al insertar datos de servicios:', error);
+        console.error('Error al insertar datos de servicios:', error);
     }
   };
   
