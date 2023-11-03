@@ -1,9 +1,36 @@
-class userController {
-  constructor() { }
+import User from '../models/user.js' 
 
-  getUser(req, res) {
-    res.send('Soy el controller de usuario');
-  }
+class UserController {
+
+    constructor() { }
+
+    createUser = async (req, res, next) => {
+
+        try {
+            
+            const { name, surname, email, password, isProvider } = req.body;
+
+            const newUser = new User({
+                name,
+                surname,
+                email,
+                password,
+                isProvider,
+            });
+        
+            // Guarda el usuario en la base de datos
+            const savedUser = await newUser.save();
+        
+            res.status(201).json(savedUser);
+
+        } catch (error) {
+
+            res.status(500).json({ error: 'Error creating a user' });
+            
+        }
+
+      };
+      
 }
-
-export default userController;
+ 
+export default UserController
