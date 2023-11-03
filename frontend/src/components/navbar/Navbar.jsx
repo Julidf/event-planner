@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
       <div className='navbar-buttons'>
           <NavLink to={"/"}>
-            Menú
+            Home
           </NavLink>
           <NavLink to={"/services"}>
             Servicios
