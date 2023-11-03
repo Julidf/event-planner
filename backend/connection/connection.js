@@ -1,18 +1,14 @@
-import { Sequelize } from "sequelize";
+import mongoose from 'mongoose';
+import { dbPort, dbName, host, dialect } from '../config/config.js'
 
-import { dbname, username, password, host, dialect, port } from '../config/config.js'
-
-const connection = new Sequelize(dbname, username, password, {
-    host,
-    dialect,
-    port,
-});
-
-try {
-    await connection.authenticate();
-    console.log('Connection has been established successfully.');
-} catch (error) {
-    console.error('Unable to connect to the database:', error);
+async function connectToDatabase() {
+    try {
+        //Use this line if your database has authentication enabled: await mongoose.connect('mongodb://user:password@127.0.0.1:27017/dbname');
+        await mongoose.connect(`${dialect}://${host}:${dbPort}/${dbName}`);
+        console.log(`DB CONNECTION ON ${dialect}://${host}:${dbPort}/${dbName}`);
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
+    }
 }
 
-export default connection
+export { connectToDatabase };
