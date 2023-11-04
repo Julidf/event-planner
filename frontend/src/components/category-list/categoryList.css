@@ -1,8 +1,8 @@
-.services-list-container {
+.category-list-container {
     width: 100%;
 }
 
-.services-list-cards {
+.category-list-cards {
     margin-inline: var(--primary-margin);
     margin-block: 4rem;
     color: #ffffff;
@@ -11,7 +11,7 @@
     justify-items: center;
 }
 
-.services-title {
+.category-title {
     margin-block: 4rem 0;
     display: flex;
     justify-content: center;

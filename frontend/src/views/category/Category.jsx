@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
-import "./services.css"
+import "./category.css"
 import Search from '../../components/search/Search'
 
-const Services = () => {
+const Category = () => {
 
   return (
     <div>
@@ -13,4 +13,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Category

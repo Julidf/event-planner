@@ -14,7 +14,7 @@ const Navbar = () => {
           <NavLink to={"/"}>
             Home
           </NavLink>
-          <NavLink to={"/services"}>
+          <NavLink to={"/categories"}>
             Servicios
           </NavLink>
           <NavLink to={"/about"} style={{marginLeft: '-10px'}}>

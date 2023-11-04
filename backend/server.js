@@ -1,7 +1,7 @@
 import express from 'express'
 import indexRoutes from './routes/indexRoutes.js'
 import cors from 'cors'
-import seedServices from './seed/seedService.js';
+import seedCategory from './seed/seedCategory.js';
 import { connectToDatabase } from './connection/connection.js'
 import { serverPort } from './config/config.js'
 
@@ -19,7 +19,7 @@ async function startServer() {
         await connectToDatabase();
 
         // Ejecuta el seeding
-        await seedServices();
+        await seedCategory();
 
         app.listen(serverPort, () => {
             console.log('SERVER PORT:', serverPort);

@@ -11,8 +11,8 @@ const Search = () => {
 
   
   return (
-    <div className='services-container'>
-        <div className='services-searcher'>
+    <div className='category-container'>
+        <div className='category-searcher'>
             <input placeholder="Buscá algo..." autoFocus type='text' value={search} onChange={(event) => onChangeSearch(event)}/>
             <button type='button'>Buscar</button>
         </div>
