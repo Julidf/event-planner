@@ -1,9 +1,9 @@
-.services-container {
+.category-container {
     margin-inline: var(--primary-margin);
 
 }
 
-.services-searcher {
+.category-searcher {
     margin: 4rem 0;
     display: flex;
     justify-content: center;
