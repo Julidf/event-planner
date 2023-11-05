@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -6,19 +6,32 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [values, setValues] = React.useState({
-    username: "",
+  const [user, setUser] = useState({});
+
+  const [values, setValues] = useState({
+    fullname: "",
     email: "",
     password: "",
+    isProvider: true,
   });
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(values);
+    values.name = values.fullname.split(" ")[0];
+    values.surname = values.fullname.split(" ")[1];
+    delete values.fullname
+    fetch("http://localhost:3030/users/registration", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    setUser(values);
     navigate("/profile");
   }
 
   function handleChange(evt) {
-
     const { target } = evt;
     const { name, value } = target;
     const newValues = {
@@ -57,13 +70,13 @@ const Login = () => {
             <label for="chk" aria-hidden="true">
               Registrate
             </label>
-          {/* <label htmlFor="username" hidden>Email</label> */}
+            {/* <label htmlFor="username" hidden>Email</label> */}
             <input
               type="text"
-              name="username"
-              placeholder="Usuario"
+              name="fullname"
+              placeholder="Nombre Completo"
               required
-              value={values.username}
+              value={values.fullname}
               onChange={handleChange}
             />
             {/* <label htmlFor="email" style="display: none">Email</label> */}
