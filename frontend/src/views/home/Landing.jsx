@@ -5,18 +5,24 @@ import Footer from '../../components/footer/Footer'
 import { Divider } from '@mui/material'
 import CategoryList from '../../components/category-list/CategoryList'
 
- const categoryData =  [
-  {name: "Música", description: "asd", image: "https://img.freepik.com/foto-gratis/disparo-gran-angular-solo-arbol-que-crece-cielo-nublado-puesta-sol-rodeada-cesped_181624-22807.jpg"},
-  {name: "Salón de fiestas", description: "asd", image: "https://www.dzoom.org.es/wp-content/uploads/2010/09/paisaje-profundidad-lineas-734x489.jpg"},
-  {name: "Fotógrafo", description: "asd", image: "https://www.lowi.es/blog/wp-content/uploads/2018/05/Blog_32.jpeg"},
-  {name: "Catering", description: "asd", image: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"},
-  {name: "Estética", description: "asd", image: "https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg"},
-  {name: "Bartender", description: "asd", image: "https://img.freepik.com/fotos-premium/fantastica-vista-cascada-kirkjufellsfoss-cerca-montana-kirkjufell-al-atardecer_761071-868.jpg"}
-] 
-
 const Landing = () => {
 
-  const [categoryList, setCategoryList] = useState(categoryData);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      // Realiza la solicitud GET al servidor para obtener las categorías
+      fetch('http://localhost:3030/categories/all')
+          .then((response) => response.json())
+          .then((data) => {
+              setData(data);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error('Error al obtener las categorías:', error);
+              setLoading(false);
+          });
+  }, []);
 
   return (
     <div>
@@ -41,7 +47,7 @@ const Landing = () => {
         </div>
         <Divider sx={{borderColor: "white", borderWidth:"1px", marginX: "15vw"}}/>
 
-        {<CategoryList categoryList={categoryList}/>}
+        {<CategoryList categoryList={data}/>}
 
         <Divider sx={{borderColor: "white", borderWidth:"1px", marginX: "15vw"}}/>
         <div className='explanation-container'>
