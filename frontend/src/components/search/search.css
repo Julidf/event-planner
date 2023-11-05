@@ -3,6 +3,15 @@
 
 }
 
+.category-list-cards {
+    margin-inline: var(--primary-margin);
+    margin-block: 4rem;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
 .category-searcher {
     margin: 4rem 0;
     display: flex;
