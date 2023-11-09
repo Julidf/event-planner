@@ -1,35 +1,47 @@
-import express from 'express'
-import indexRoutes from './routes/indexRoutes.js'
-import cors from 'cors'
-import seedCategory from './seed/seedCategory.js';
-import { connectToDatabase } from './connection/connection.js'
-import { serverPort } from './config/config.js'
+import connectDB from './connection/connection.js';
+import { app } from './app.js';
+import { serverPort } from './config/config.js';
+import { logger } from './config/logger.js';
 
-const app = express();
-
-app.use(express.json());
-app.use(cors())
-app.use(indexRoutes);
-
-async function startServer() {
-
+//StartSequence
+let start = async () => {
+    let server;
     try {
-
         // Conecta con la base de datos
-        await connectToDatabase();
-
-        // Ejecuta el seeding
-        await seedCategory();
-
-        app.listen(serverPort, () => {
-            console.log('SERVER PORT:', serverPort);
+        connectDB().then(()=>{
+            server = app.listen(serverPort, () => {
+                logger.info('SERVER PORT: '+ serverPort);
+            });
         });
-
     } catch (err) {
-
-        console.error('Error starting the server:', err);
-
+        logger.info('Error iniciando el servidor');
+        logger.error(err);
     }
-}
+    return server;
+};
+
+let server = await start();
+
+const exitHandler = () => {
+    if (server) {
+      server.close(() => {
+        logger.info('Server Cerrado');
+        process.exit(1);
+      });
+    } else {
+      process.exit(1);
+    }
+};
+
+const unexpectedErrorHandler = (err) => {
+    logger.error(err);
+    exitHandler();
+};
   
-startServer();
+process.on('uncaughtException', unexpectedErrorHandler);
+process.on('unhandledRejection', unexpectedErrorHandler);
+
+process.on('SIGTERM', () => {
+    logger.info('SIGTERM recibido');
+    exitHandler();
+});

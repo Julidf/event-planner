@@ -1,4 +1,5 @@
 import Category from '../models/category.js';
+import { logger } from '../config/logger.js'
 
 //imágenes de Unsplash
 const categoryData = [
@@ -15,9 +16,10 @@ const seedCategory = async () => {
     try {
         await Category.deleteMany({});
         await Category.insertMany(categoryData);
-        console.log('SERVICIOS CARGADOS CON ÉXITO');
+        logger.info('SERVICIOS CARGADOS CON ÉXITO');
     } catch (error) {
-        console.error('Error al insertar datos de servicios:', error);
+        logger.info('Error al insertar datos de servicios');
+        logger.error(error);
     }
   };
   

@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #restart: unless-stopped
+    command: yarn run dev
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/event-planner
+      - NODE_ENV=development
+    ports:
+      - '80:8080'
+    volumes:
+      - '/app/node_modules'
+      - '.:/app'
+    networks:
+      - api-network
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    restart: always
+    networks:
+      - api-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/event-planner --quiet
+  
+  mongo-express:
+    image: mongo-express
+    #restart: always
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ROOT_USER}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ROOT_PASSWORD}
+      - ME_CONFIG_BASICAUTH_USERNAME=${MONGOEXPRESS_LOGIN}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGOEXPRESS_PASSWORD}
+    networks:
+      - api-network
+    ports:
+      - '8081:8081'
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+volumes:
+  dbdata:
+
+networks:
+  api-network:
+    driver: bridge

@@ -1,4 +1,5 @@
 import User from '../models/user.js' 
+import { logger } from '../config/logger.js'
 
 class UserController {
 
