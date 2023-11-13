@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #restart: unless-stopped
+    command: yarn run test
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/event-planner
+      - NODE_ENV=test
+    ports:
+      - '80:8080'
+    volumes:
+      - '/app/node_modules'
+      - '.:/app'
+    networks:
+      - api-network
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    restart: always
+    networks:
+      - api-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/event-planner --quiet
+
+volumes:
+  dbdata:
+
+networks:
+  api-network:
+    driver: bridge

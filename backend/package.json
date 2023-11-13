@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --legacy-watch server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --colors --verbose",
     "start": "node server.js"
   },
-  "author": "Camila Jaurena",
+  "author": "Camila Jaurena, Javier Toso",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -28,6 +28,9 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.0"
+    "faker": "^5.1.0",
+    "jest": "^29.0.1",
+    "nodemon": "^2.0.0",
+    "supertest": "^6.0.1"
   }
 }
