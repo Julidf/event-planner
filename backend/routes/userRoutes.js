@@ -1,10 +1,12 @@
 import { Router } from "express";
 import {auth}  from '../middlewares/auth.js';
 import * as userController from "../controllers/usersController.js";
+import * as authController from "../controllers/authController.js";
 
 const userRoutes = Router();
 
 userRoutes.post("/registration", userController.createUser)
+userRoutes.post("/login", authController.login)
 userRoutes
   .route('/')
   .post(auth('manageUsers'), userController.createUser)
