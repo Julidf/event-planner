@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { dbPort, dbName, host, dialect, isDev, isTest } from '../config/config.js'
 import { logger } from '../config/logger.js'
 import seedCategory from '../seed/seedCategory.js';
+import seedUser from '../seed/seedUser.js';
+import seedService from '../seed/seedService.js';
 
 const connectDB = async () => {
     try {
@@ -10,7 +12,9 @@ const connectDB = async () => {
             if(isDev() || isTest()){
                 logger.info(`Seeding`);
                 // Ejecuta el seeding
-                await seedCategory();  
+                await seedCategory();
+                await seedUser();
+                await seedService();
             }
         });
         logger.debug(`DB CONNECTION ON ${dialect}://${host}:${dbPort}/${dbName}`);

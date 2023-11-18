@@ -32,6 +32,7 @@ services:
       - api-network
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/event-planner --quiet
+    hostname: mongodb
   
   mongo-express:
     image: mongo-express

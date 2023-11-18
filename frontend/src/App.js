@@ -13,6 +13,7 @@ function App() {
           <Route path="/" Component={Landing} />
           <Route path="/about" Component={About} />
           <Route path="/categories" Component={Category} />
+          <Route path="/categories/:param" Component={Category} />
           <Route path="/login" Component={Login} />
           <Route path="/profile" Component={Profile} />
       </Routes>

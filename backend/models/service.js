@@ -29,7 +29,7 @@ const reviewSchema = mongoose.Schema(
 
 const serviceSchema = mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true
@@ -55,11 +55,11 @@ const serviceSchema = mongoose.Schema(
         default: false,
         index: true,
     },
-    priceType: {
+   /*  priceType: {
         type: String,
         enum: [priceTypes.PERHOUR, priceTypes.PERPERSON, priceTypes.PERSTAFF, priceTypes.SPECIAL],
         required: true,
-    },
+    }, */
     offer: [{  
         description: {
             type: String,
@@ -100,12 +100,12 @@ const serviceSchema = mongoose.Schema(
   }
 );
 
-const priceTypes = {
+/* const priceTypes = {
     PERHOUR: 'perHour',
     PERPERSON: 'perPerson',
     PERSTAFF: 'perStaff',
     SPECIAL: 'special',
-};
+}; */
 // Agrega el plugin de conversion de mongoose a json
 serviceSchema.plugin(toJSON);
 reviewSchema.plugin(toJSON);
@@ -121,4 +121,4 @@ const Service = mongoose.model('Service', serviceSchema);
  * @typedef Review
  */
 const Review = mongoose.model('Review', reviewSchema);
-export {Service, Review, priceTypes};
+export default Service; //priceTypes and review

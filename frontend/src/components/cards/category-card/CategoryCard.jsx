@@ -6,9 +6,13 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "./categoryCard.css";
 
-const CategoryCard = (category) => {
+const CategoryCard = ({category, type}) => {
   return (
-    <div>
+    <div onClick={
+      () => {
+        window.location.href = `/${type}/${category.name.toLowerCase()}`
+      }
+    }>
       <Card
         key={category._id}
         sx={{ width: 300, marginBottom: 8, borderRadius: 5 }}

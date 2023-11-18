@@ -9,29 +9,56 @@ const Login = () => {
   const [user, setUser] = useState({});
 
   const [values, setValues] = useState({
-    fullname: "",
+    name: "",
+    surname: "",
     email: "",
     password: "",
-    isProvider: true,
+    role: false,
   });
 
-  function handleSubmit(evt) {
+  const [valuesLogin, setValuesLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  function handleSubmitRegister(evt) {
     evt.preventDefault();
-    values.name = values.fullname.split(" ")[0];
-    values.surname = values.fullname.split(" ")[1];
-    delete values.fullname
-    fetch("http://localhost:3030/users/registration", {
+    values.role = values.role ? "provider" : "user";
+    fetch("http://localhost:3030/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
+    }).then((res) => {
+      if (res.ok) {
+        setUser(values);
+        navigate("/profile");
+      } else {
+        alert("Error al crear usuario");
+      }
     });
-    setUser(values);
-    navigate("/profile");
   }
 
-  function handleChange(evt) {
+  function handleSubmitLogin(evt) {
+    evt.preventDefault();
+    fetch("http://localhost:3030/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(valuesLogin),
+    }).then((res) => {
+      if (res.ok) {
+        setUser(values);
+        navigate("/profile");
+      } else {
+        alert("Error al iniciar sesión");
+      }
+    });
+  }
+
+  function handleChangeRegister(evt) {
     const { target } = evt;
     const { name, value } = target;
     const newValues = {
@@ -40,6 +67,16 @@ const Login = () => {
     };
     setValues(newValues);
   }
+
+  function handleChangeLogin(evt) {
+    const { target } = evt;
+    const { name, value } = target;
+    const newValues = {
+      ...valuesLogin,
+      [name]: value,
+    };
+    setValuesLogin(newValues);
+  }
   return (
     <div className="login-view">
       <Navbar />
@@ -47,15 +84,24 @@ const Login = () => {
         <input type="checkbox" id="chk" aria-hidden="true" />
 
         <div className="login">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitLogin}>
             <label for="chk" aria-hidden="true">
               Inicia Sesión
             </label>
-            <input type="email" name="email" placeholder="Email" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={valuesLogin.email}
+              onChange={handleChangeLogin}
+              required
+            />
             <input
               type="password"
-              name="pswd"
+              name="password"
               placeholder="Contraseña"
+              value={valuesLogin.password}
+              onChange={handleChangeLogin}
               required
             />
             <button type="submit">Ingresar</button>
@@ -66,18 +112,26 @@ const Login = () => {
         </div>
 
         <div className="signup">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitRegister}>
             <label for="chk" aria-hidden="true">
               Registrate
             </label>
             {/* <label htmlFor="username" hidden>Email</label> */}
             <input
               type="text"
-              name="fullname"
-              placeholder="Nombre Completo"
+              name="name"
+              placeholder="Nombre"
               required
-              value={values.fullname}
-              onChange={handleChange}
+              value={values.name}
+              onChange={handleChangeRegister}
+            />
+            <input
+              type="text"
+              name="surname"
+              placeholder="Apellido"
+              required
+              value={values.surname}
+              onChange={handleChangeRegister}
             />
             {/* <label htmlFor="email" style="display: none">Email</label> */}
             <input
@@ -86,7 +140,7 @@ const Login = () => {
               placeholder="Email"
               required
               value={values.email}
-              onChange={handleChange}
+              onChange={handleChangeRegister}
             />
             {/* <label htmlFor="password" hidden>Email</label> */}
             <input
@@ -95,8 +149,19 @@ const Login = () => {
               placeholder="Contraseña"
               required
               value={values.password}
-              onChange={handleChange}
+              onChange={handleChangeRegister}
+              style={{ marginBottom: "10px" }}
             />
+            <div style={{ display: "flex" }}>
+              <input
+                type="checkbox"
+                name="role"
+                value={values.role}
+                onChange={handleChangeRegister}
+                style={{ width: "15px", height: "15px", margin: "auto" }}
+              />
+              <p style={{ margin: "auto" }}>Quieres publicar servicios?</p>
+            </div>
             <button type="submit">Creá tu cuenta!</button>
           </form>
         </div>
