@@ -11,7 +11,7 @@ function CategoryList({ categoryList }) {
             </div>
             <div className='category-list-cards'>
                 {categoryList
-                    ? categoryList.map((category, idx) => <CategoryCard key={idx} {...category} />)
+                    ? categoryList.map((category, idx) => <CategoryCard key={idx} category={category} type={"categories"} />)
                     : <h1>Loading categories...</h1>}
             </div>
         </div>
