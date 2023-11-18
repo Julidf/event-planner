@@ -11,7 +11,7 @@ services:
       - MONGODB_URL=mongodb://mongodb:27017/event-planner
       - NODE_ENV=development
     ports:
-      - '80:8080'
+      - '3030:3030'
     volumes:
       - '/app/node_modules'
       - '.:/app'

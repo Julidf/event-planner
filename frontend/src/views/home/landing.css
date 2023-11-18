@@ -1,6 +1,8 @@
 
 .landing-container {
     height: 100%;
+    padding-bottom: 120px;
+    position: relative;
 }
 
 /* BANNER */
@@ -50,7 +52,6 @@
     & img {
         max-height: 100%;
         max-width: 100%;
-        width: 6    0%;
         height: 100%;
     }
 }

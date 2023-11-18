@@ -29,7 +29,6 @@
 }
 
 .navbar-auth {
-    margin-left: auto;
     margin-right: var(--primary-margin);
 
     .auth-button {

@@ -10,7 +10,7 @@ const Footer = () => {
                 <p>Event Planner</p>
             </div>
             <div className='footer-text'>
-                <span> ABSOLUTAMENTE TODOS LOS DERECHOS RESERVADOS!!!!</span>
+                <span> Tu solución de eventos!</span>
             </div>
         </div>
     </div>

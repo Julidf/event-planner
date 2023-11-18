@@ -52,7 +52,6 @@ const Search = () => {
             value={search}
             onChange={(event) => onChangeSearch(event)}
           />
-          <button type="button">Buscar</button>
         </div>
       </div>
       <div className="category-list-cards">
