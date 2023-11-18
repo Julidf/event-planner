@@ -5,12 +5,13 @@ import Search from '../../components/search/Search'
 
 const Category = () => {
 
+  
   return (
     <div>
       <Navbar />
       <Search />
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

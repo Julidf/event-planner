@@ -11,7 +11,7 @@ const generateServices = () => {
   const services = [];
   for (let i = 0; i < 10; i++) {
     const service = new Service({
-      title: faker.lorem.words(3),
+      name: faker.lorem.words(3),
       description: faker.lorem.paragraph(),
       owner: userId1, 
       category: categoryId4, 
@@ -28,7 +28,7 @@ const generateServices = () => {
       ],
       country: faker.address.country(),
       city: faker.address.city(),
-      picture: faker.image.imageUrl(),
+      picture: "https://loremflickr.com/320/240",
       expires: faker.date.future(),
       reviews: [],
       rank: faker.random.number({ min: 0, max: 5 }),

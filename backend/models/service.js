@@ -29,7 +29,7 @@ const reviewSchema = mongoose.Schema(
 
 const serviceSchema = mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true

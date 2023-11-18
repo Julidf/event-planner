@@ -7,36 +7,58 @@ const Search = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
+  const [categories, setCategories] = useState([]);
   let arrayFilteredData = [];
+
+  useEffect(() => {
+    // Realiza la solicitud GET al servidor para obtener las categorías
+    fetch("http://localhost:3030/services/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setFilteredData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los servicios:", error);
+        setLoading(false);
+      });
+  }, []);
+
   useEffect(() => {
     // Realiza la solicitud GET al servidor para obtener las categorías
     fetch("http://localhost:3030/categories/all")
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
-        setLoading(false);
+        setCategories(data);
       })
       .catch((error) => {
         console.error("Error al obtener las categorías:", error);
-        setLoading(false);
       });
   }, []);
 
-  const onChangeSearch = (event) => {
-    console.log(event.target.value);
-    setSearch(event.target.value);
-    if (event.target.value == ""){
+  const findCategories = () => {
+    arrayFilteredData = [];
+    setSearch(search);
+    if (search == "") {
       arrayFilteredData = [];
-    } else{
-      data.forEach((category) => {
-        if (
-          category.name.toLowerCase().includes(event.target.value.toLowerCase())
-        ) {
-          arrayFilteredData.push(category);
-        } else if (event.target.value == "") {
-          arrayFilteredData = [];
-        }
-      });  
+    } else {
+      let category = categories.filter((category) =>
+        category.name.toLowerCase().includes(search.toLowerCase())
+      );
+      if (category != undefined) {
+        console.log("category", category);
+        arrayFilteredData = data.filter(
+          (service) => category.find((cat) => cat.id == service.category)
+        );
+      }
+
+      if (arrayFilteredData.length == 0) {
+        arrayFilteredData = data.filter((service) =>
+          service.name.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+      console.log(arrayFilteredData);
     }
     setFilteredData(arrayFilteredData);
   };
@@ -46,13 +68,15 @@ const Search = () => {
       <div className="category-container">
         <div className="category-searcher">
           <input
-            placeholder="Buscá algo..."
+            placeholder="Busca un servicio o escribe una categoria..."
             autoFocus
             type="text"
             value={search}
-            onChange={(event) => onChangeSearch(event)}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <button type="button">Buscar</button>
+          <button onClick={findCategories} type="button">
+            Buscar
+          </button>
         </div>
       </div>
       <div className="category-list-cards">
