@@ -13,7 +13,7 @@ const Login = () => {
     surname: "",
     email: "",
     password: "",
-    isProvider: true,
+    role: false,
   });
 
   const [valuesLogin, setValuesLogin] = useState({
@@ -23,6 +23,7 @@ const Login = () => {
 
   function handleSubmitRegister(evt) {
     evt.preventDefault();
+    values.role = values.role ? "provider" : "user";
     fetch("http://localhost:3030/auth/register", {
       method: "POST",
       headers: {
@@ -149,7 +150,18 @@ const Login = () => {
               required
               value={values.password}
               onChange={handleChangeRegister}
+              style={{ marginBottom: "10px" }}
             />
+            <div style={{ display: "flex" }}>
+              <input
+                type="checkbox"
+                name="role"
+                value={values.role}
+                onChange={handleChangeRegister}
+                style={{ width: "15px", height: "15px", margin: "auto" }}
+              />
+              <p style={{ margin: "auto" }}>Quieres publicar servicios?</p>
+            </div>
             <button type="submit">Creá tu cuenta!</button>
           </form>
         </div>
