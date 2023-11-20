@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios"
 import {
   MDBCol,
   MDBContainer,
@@ -21,6 +21,47 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function ProfilePage() {
+  const [userData, setUserData] = useState({});
+  const navigate = useNavigate()
+  const userId = localStorage.getItem("user_id");
+  const access_token = localStorage.getItem("access_token");
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`http://localhost:3030/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          }
+        });
+        setUserData(response.data)
+      } catch (error) {
+        console.error(error.message);
+        // alert(error.message)
+      }
+    }
+    fetchData();
+  }, [userId, access_token]);
+
+  const logout = async () => {
+    try {
+      const body = {
+        "refreshToken": localStorage.getItem("refresh_token")
+      }
+      const response = await axios.post(`http://localhost:3030/users/logout`, body);
+      navigate("/login")
+      localStorage.removeItem("refresh_token")
+      localStorage.removeItem("access_token")
+      localStorage.removeItem("expiration_token")
+      localStorage.removeItem("user_id")
+      localStorage.removeItem("user_email")
+      console.log(response)
+    } catch (error) {
+      console.error(error.message);
+      // alert(error.message)
+    }
+  }
+
   return (
     <>
       <section style={{ backgroundColor: "#eee" }}>
@@ -38,11 +79,12 @@ export default function ProfilePage() {
                       style={{ width: "150px" }}
                       fluid
                     />
-                    <p className="text-muted mb-1 mt-3">Christian Viarnes</p>
+                    <p className="text-muted mb-1 mt-3">{userData.name} {userData.surname}</p>
                     <p className="text-muted mb-4">Buenos Aires, Argentina</p>
                     <div className="d-flex justify-content-center mb-2">
-                      <MDBBtn>Modificar Cuenta</MDBBtn>
-                      <MDBBtn outline className="ms-1">
+                      <MDBBtn outline color="danger" onClick={logout}> Desloguearse</MDBBtn>
+                      <MDBBtn className="ms-1">Modificar Cuenta</MDBBtn>
+                      <MDBBtn outline color="warning" className="ms-1">
                         Borrar Cuenta
                       </MDBBtn>
                     </div>
@@ -54,7 +96,7 @@ export default function ProfilePage() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      Christian
+                      {userData.name}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -65,7 +107,7 @@ export default function ProfilePage() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      Viarnes
+                      {userData.surname}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -76,7 +118,7 @@ export default function ProfilePage() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      christiancdv@gmail.com
+                      {userData.email}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -95,7 +137,7 @@ export default function ProfilePage() {
                     <MDBCardText>Proveedor</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">✅</MDBCardText>
+                    <MDBCardText className="text-muted">{userData.role==="user" ? "❌" : "✅"}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

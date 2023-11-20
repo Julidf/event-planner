@@ -1,12 +1,13 @@
 .about-container {
-    background-color: #3f3f3f;
-    height: 77vh;
+    background-color: #2F3335;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .about-inner {
-    /* margin-inline: var(--primary-margin); */
     color: white;
-    padding-block: 4rem;
+    padding-top: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;

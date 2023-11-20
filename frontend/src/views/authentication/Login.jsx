@@ -39,11 +39,13 @@ const Login = () => {
       }
     })
     .then((data) => {
+      console.log(data)
       const tokens = data.tokens;
       localStorage.setItem('access_token', tokens.access.token);
       localStorage.setItem('refresh_token', tokens.refresh.token);
       localStorage.setItem('expiration_token', tokens.refresh.expires);
-      localStorage.setItem('user_email', values.email);
+      localStorage.setItem('user_email', data.user.email);
+      localStorage.setItem('user_id', data.user.id);
       setUser(values)
       navigate("/profile");
     })
@@ -74,7 +76,8 @@ const Login = () => {
       localStorage.setItem('access_token', tokens.access.token);
       localStorage.setItem('refresh_token', tokens.refresh.token);
       localStorage.setItem('expiration_token', tokens.refresh.expires);
-      localStorage.setItem('user_email', valuesLogin.email);
+      localStorage.setItem('user_email', data.user.email);
+      localStorage.setItem('user_id', data.user.id);
       setUser(valuesLogin)
       navigate("/profile");
     })

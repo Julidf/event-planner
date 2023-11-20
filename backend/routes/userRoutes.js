@@ -7,6 +7,7 @@ const userRoutes = Router();
 
 userRoutes.post("/registration", userController.createUser)
 userRoutes.post("/login", authController.login)
+userRoutes.post("/logout", authController.logout)
 userRoutes
   .route('/')
   .post(auth('manageUsers'), userController.createUser)

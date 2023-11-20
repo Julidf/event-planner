@@ -10,7 +10,7 @@ const Category = () => {
   let { param } = useParams();
   
   return (
-    <div>
+    <div className='category'>
       <Navbar />
       <Search param={param} />
       <Footer />
