@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import "./navbar.css"
 
 const Navbar = () => {
+  const [isLogged, setIsLogged] = useState(localStorage.getItem('access_token'));
+
   return (
     <div className='navbar-container'>
       <div className='navbar-icon'>
@@ -21,8 +23,8 @@ const Navbar = () => {
             Sobre Nosotros
           </NavLink>
       </div>
-      <div className='navbar-auth'>        
-        <Link to={"/login"} className='auth-button login'>
+      <div className='navbar-auth'>
+        <Link to={isLogged ? "/profile" : "/login"} className='auth-button login'>
           👤ㅤMi Cuenta
         </Link>
       </div>

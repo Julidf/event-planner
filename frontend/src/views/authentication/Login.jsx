@@ -30,17 +30,30 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
-    }).then((res) => {
+    })
+    .then((res) => {
       if (res.ok) {
-        setUser(values);
-        navigate("/profile");
+        return res.json();
       } else {
-        alert("Error al crear usuario");
+        throw new Error("Error al registrarse");
       }
+    })
+    .then((data) => {
+      const tokens = data.tokens;
+      localStorage.setItem('access_token', tokens.access.token);
+      localStorage.setItem('refresh_token', tokens.refresh.token);
+      localStorage.setItem('expiration_token', tokens.refresh.expires);
+      localStorage.setItem('user_email', values.email);
+      setUser(values)
+      navigate("/profile");
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Error al registrarse");
     });
   }
 
-  function handleSubmitLogin(evt) {
+  async function handleSubmitLogin(evt) {
     evt.preventDefault();
     fetch("http://localhost:3030/auth/login", {
       method: "POST",
@@ -48,13 +61,26 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(valuesLogin),
-    }).then((res) => {
+    })
+    .then((res) => {
       if (res.ok) {
-        setUser(values);
-        navigate("/profile");
+        return res.json();
       } else {
-        alert("Error al iniciar sesión");
+        throw new Error("Error al iniciar sesión");
       }
+    })
+    .then((data) => {
+      const tokens = data.tokens;
+      localStorage.setItem('access_token', tokens.access.token);
+      localStorage.setItem('refresh_token', tokens.refresh.token);
+      localStorage.setItem('expiration_token', tokens.refresh.expires);
+      localStorage.setItem('user_email', valuesLogin.email);
+      setUser(valuesLogin)
+      navigate("/profile");
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Error al iniciar sesión");
     });
   }
 

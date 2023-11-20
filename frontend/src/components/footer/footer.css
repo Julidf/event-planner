@@ -1,14 +1,13 @@
 .footer-container {
     width: 100%;
     color: white;
-    position: absolute;
-    bottom: 0;
-    height: 120px;
+    background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 .footer-inner {
     margin-inline: var(--primary-margin);
-    margin-block: 1rem;
+    padding-block: 1rem;
     display: flex;
 }
 
@@ -28,4 +27,9 @@
     align-items: center;
     display: flex;
     margin: auto;
+}
+
+.footer-items {
+    display: flex;
+    gap: 20px;
 }
