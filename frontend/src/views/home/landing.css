@@ -8,7 +8,7 @@
 .banner {
     height: auto;
     width: 100%;
-    background-color: #3f3f3f;
+    background-color: #2F3335;
     display: flex;
 
 }
@@ -82,7 +82,7 @@
 /* EXPLANATION */
 .explanation-container {
     width: 100%;
-    background-color: #3f3f3f;
+    background-color: #2F3335;
 }
 
 .explanation-inner {
