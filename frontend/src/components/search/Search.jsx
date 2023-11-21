@@ -75,6 +75,18 @@ const Search = ({ param }) => {
     setFilteredData(arrayFilteredData);
   };
 
+  const getCategoryName = (id) => {
+    let category = categories.find((category) => category.id == id);
+    if (category == undefined) {
+      return "";
+    }
+    return category.name;
+  }
+
+  const getPrice = (service) => {
+    return service.offer[0].price;
+  }
+
   return (
     <>
       <div className="category-container">
@@ -94,7 +106,7 @@ const Search = ({ param }) => {
       <div className="category-list-cards">
         {filteredData ? (
           filteredData.map((category, idx) => (
-            <CategoryCard key={idx} category={category} type={"services"} />
+            <CategoryCard key={idx} category={category} type={"services"} categoryName={getCategoryName(category.category)} precio={getPrice(category)} />
           ))
         ) : (
           <h1>Loading categories...</h1>
