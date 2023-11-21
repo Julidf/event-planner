@@ -9,7 +9,7 @@ const categoryId4 = new mongoose.Types.ObjectId('655630870f773cd06e37d0bd');
 // Función para generar servicios ficticios
 const generateServices = () => {
   const services = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 0; i++) {
     const service = new Service({
       name: faker.lorem.words(3),
       description: faker.lorem.paragraph(),

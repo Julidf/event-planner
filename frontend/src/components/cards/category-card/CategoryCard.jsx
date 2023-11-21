@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,13 +6,13 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "./categoryCard.css";
 
-const CategoryCard = ({category, type}) => {
+const CategoryCard = ({ category, type, categoryName, precio }) => {
   return (
-    <div onClick={
-      () => {
-        window.location.href = `/${type}/${category.name.toLowerCase()}`
-      }
-    }>
+    <div
+      onClick={() => {
+        window.location.href = `/${type}/${category.name.toLowerCase()}`;
+      }}
+    >
       <Card
         key={category._id}
         sx={{ width: 300, marginBottom: 8, borderRadius: 5 }}
@@ -31,6 +31,17 @@ const CategoryCard = ({category, type}) => {
             <Typography variant="body2" color="text.secondary">
               {category.description}
             </Typography>
+            <Typography variant="body2" color="text.secondary"></Typography>
+            {categoryName != "" && precio != "" && (
+              <>
+                <Typography variant="body2" color="text.secondary">
+                  <b>Categoria: {categoryName}</b>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <b>Precio: ${precio}</b>
+                </Typography>
+              </>
+            )}
           </CardContent>
         </CardActionArea>
       </Card>
