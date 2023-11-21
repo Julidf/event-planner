@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,7 @@ const Login = () => {
 
   function handleSubmitRegister(evt) {
     evt.preventDefault();
+    console.log(user);
     values.role = values.role ? "provider" : "user";
     fetch("http://localhost:3030/auth/register", {
       method: "POST",
