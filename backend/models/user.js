@@ -30,6 +30,14 @@ const userSchema = mongoose.Schema(
             minlength: 8,
             private: true, // utilizado por el plugin toJSON 
         },
+        location: {
+            type: String,
+            trim: true,
+        },
+        phoneNumber: {
+            type: String,
+            trim: true,
+        },
         role: {
             type: String,
             enum: roles,
@@ -38,7 +46,7 @@ const userSchema = mongoose.Schema(
         isEmailVerified: {
             type: Boolean,
             default: false,
-          },
+        },
     },
     {
         timestamps: true,

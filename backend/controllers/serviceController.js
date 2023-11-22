@@ -66,6 +66,20 @@ class ServiceController {
         }
     };
 
+    // Obtener servicios por ID de usuario
+    getServicesByUserId = async (req, res, next) => {
+        try {
+            const userId = req.params.userId;
+            const services = await Service.find({ owner: userId });
+            if (!services || services.length === 0) {
+                return res.status(404).json({ error: 'No se encontraron servicios para este usuario' });
+            }
+            res.json(services);
+        } catch (error) {
+            res.status(500).json({ error: 'Error al obtener los servicios del usuario' });
+        }
+    };
+
 }
 
 export default ServiceController
