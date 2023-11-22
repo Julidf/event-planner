@@ -27,6 +27,13 @@ const reviewSchema = mongoose.Schema(
         },
 });
 
+const priceTypes = {
+    PERHOUR: 'perHour',
+    PERPERSON: 'perPerson',
+    PERSTAFF: 'perStaff',
+    SPECIAL: 'special',
+ };
+
 const serviceSchema = mongoose.Schema(
   {
     name: {
@@ -55,11 +62,11 @@ const serviceSchema = mongoose.Schema(
         default: false,
         index: true,
     },
-   /*  priceType: {
+    priceType: {
         type: String,
         enum: [priceTypes.PERHOUR, priceTypes.PERPERSON, priceTypes.PERSTAFF, priceTypes.SPECIAL],
         required: true,
-    }, */
+    },
     offer: [{  
         description: {
             type: String,
@@ -100,12 +107,6 @@ const serviceSchema = mongoose.Schema(
   }
 );
 
-/* const priceTypes = {
-    PERHOUR: 'perHour',
-    PERPERSON: 'perPerson',
-    PERSTAFF: 'perStaff',
-    SPECIAL: 'special',
-}; */
 // Agrega el plugin de conversion de mongoose a json
 serviceSchema.plugin(toJSON);
 reviewSchema.plugin(toJSON);

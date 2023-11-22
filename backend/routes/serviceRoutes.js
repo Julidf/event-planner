@@ -9,5 +9,6 @@ serviceRoutes.post("/create", serviceController.createService)
 serviceRoutes.get("/:id", serviceController.getServiceById)
 serviceRoutes.put("/:id", serviceController.updateService)
 serviceRoutes.delete("/:id", serviceController.deleteService)
+serviceRoutes.get('/user/:userId', serviceController.getServicesByUserId);
 
 export default serviceRoutes
