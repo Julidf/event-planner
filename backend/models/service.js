@@ -66,6 +66,7 @@ const serviceSchema = mongoose.Schema(
         type: String,
         enum: [priceTypes.PERHOUR, priceTypes.PERPERSON, priceTypes.PERSTAFF, priceTypes.SPECIAL],
         required: true,
+        default: priceTypes.PERHOUR,
     },
     offer: [{  
         description: {

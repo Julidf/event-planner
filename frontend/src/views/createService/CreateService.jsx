@@ -27,6 +27,7 @@ const CreateService = () => {
       },
     ],
     country: "Argentina",
+    city: "Buenos Aires",
     rank: 1,
     picture: "",
   });

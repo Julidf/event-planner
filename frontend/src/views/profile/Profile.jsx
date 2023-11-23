@@ -29,21 +29,35 @@ export default function ProfilePage() {
   const access_token = localStorage.getItem("access_token");
   
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(`http://localhost:3030/users/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${access_token}`
-          }
-        });
-        setUserData(response.data)
-      } catch (error) {
-        console.error(error.message);
-        // alert(error.message)
-      }
-    }
-    fetchData();
+    fetchUserData();
+    fetchServiceData();
   }, [userId, access_token]);
+
+  async function fetchUserData() {
+    try {
+      const response = await axios.get(`http://localhost:3030/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        }
+      });
+      setUserData(response.data)
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  async function fetchServiceData() {
+    try {
+      const response = await axios.get(`http://localhost:3030/services/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        }
+      });
+      setServices(response.data)
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 
   const logout = async () => {
     const body = {
@@ -145,12 +159,12 @@ export default function ProfilePage() {
             </MDBCard>
 
             <MDBRow className="g-2">
-              {services && services.map((service) => {
-                <ServiceCard key={service._id} />
-              })}
+              {services && services.map((service) => (
+                <ServiceCard key={service.id} serviceData={service}/>
+              ))}
             </MDBRow>
 
-            <div>
+            {userData.role==="provider" && <div>
               <MDBDropdown dropup>
                 <MDBDropdownToggle
                   className="btn-primary"
@@ -186,7 +200,7 @@ export default function ProfilePage() {
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
-            </div>
+            </div>}
           </MDBCol>
         </MDBContainer>
       </section>

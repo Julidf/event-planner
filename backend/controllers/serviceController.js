@@ -19,7 +19,7 @@ class ServiceController {
             const newService = await Service.create(req.body);
             res.status(201).json(newService);
         } catch (error) {
-            res.status(500).json({ error: 'Error al crear el servicio' });
+            res.status(500).json({ error: 'Error al crear el servicio' + error.message});
         }
     };
 

@@ -47,6 +47,8 @@ const Login = () => {
       localStorage.setItem('expiration_token', tokens.refresh.expires);
       localStorage.setItem('user_email', data.user.email);
       localStorage.setItem('user_id', data.user.id);
+      localStorage.setItem('name', data.user.name);
+      localStorage.setItem('surname', data.user.surname);
       setUser(values)
       navigate("/profile");
     })
@@ -79,6 +81,8 @@ const Login = () => {
       localStorage.setItem('expiration_token', tokens.refresh.expires);
       localStorage.setItem('user_email', data.user.email);
       localStorage.setItem('user_id', data.user.id);
+      localStorage.setItem('name', data.user.name);
+      localStorage.setItem('surname', data.user.surname);
       setUser(valuesLogin)
       navigate("/profile");
     })

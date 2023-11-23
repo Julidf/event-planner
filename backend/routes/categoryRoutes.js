@@ -5,5 +5,7 @@ const categoryController = new CategoryController()
 const categoryRoutes = Router();
 
 categoryRoutes.get("/all", categoryController.getAll)
+categoryRoutes.get("/:id", categoryController.getcategoryById)
+
 
 export default categoryRoutes

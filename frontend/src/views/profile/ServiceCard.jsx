@@ -9,16 +9,18 @@ import {
   } from "mdb-react-ui-kit";
   
 
-function ServiceCard() {
+function ServiceCard({serviceData}) {
+    const name = localStorage.getItem("name");
+    const surname = localStorage.getItem("surname");
+
   return (
     <MDBCol md="6">
-        <MDBCard className="mb-4 mb-md-0">
+        <MDBCard className="mb-4 mb-md-0" >
             <MDBCardBody>
-            <MDBCardText className="mb-4">
+            <MDBCardText className="mb-1">
                 <span className="text-primary font-italic me-1">
-                Servicio
-                </span>{" "}
-                Brindado por mi
+                    {serviceData.name}
+                </span>
             </MDBCardText>
             <hr />
             <MDBRow>
@@ -27,17 +29,17 @@ function ServiceCard() {
                 </MDBCol>
                 <MDBCol sm="9">
                 <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                    Yo
+                    {name} {surname} (Yo)
                 </MDBCardText>
                 </MDBCol>
             </MDBRow>
             <MDBRow>
                 <MDBCol sm="3">
-                <MDBCardText style={{ fontSize: ".80rem" }}>Comprador</MDBCardText>
+                <MDBCardText style={{ fontSize: ".80rem" }}>Descripción</MDBCardText>
                 </MDBCol>
                 <MDBCol sm="9">
                 <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                    Lautaro Greco
+                    {serviceData.offer[0].description}
                 </MDBCardText>
                 </MDBCol>
             </MDBRow>
@@ -47,17 +49,17 @@ function ServiceCard() {
                 </MDBCol>
                 <MDBCol sm="9">
                 <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                    $4533
+                    $ {serviceData.offer[0].price}
                 </MDBCardText>
                 </MDBCol>
             </MDBRow>
             <MDBRow>
                 <MDBCol sm="3">
-                <MDBCardText style={{ fontSize: ".80rem" }}>Estado</MDBCardText>
+                <MDBCardText style={{ fontSize: ".80rem" }}>Ubicación</MDBCardText>
                 </MDBCol>
                 <MDBCol sm="9">
                 <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                    Pagado y finalizado el dia 12/12/2020
+                    {serviceData.city}, {serviceData.country}
                 </MDBCardText>
                 </MDBCol>
             </MDBRow>
