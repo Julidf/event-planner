@@ -86,7 +86,9 @@ const Search = ({ param }) => {
   const getPrice = (service) => {
     return service.offer[0].price;
   }
-
+  const getPriceType = (service) => {
+    return service.offer[0].priceType;
+  }
   return (
     <>
       <div className="category-container">
@@ -108,7 +110,7 @@ const Search = ({ param }) => {
       <div className="category-list-cards">
         {filteredData ? (
           filteredData.map((category, idx) => (
-            <CategoryCard key={idx} category={category} type={"services"} categoryName={getCategoryName(category.category)} precio={getPrice(category)} />
+            <CategoryCard key={idx} category={category} type={"services"} categoryName={getCategoryName(category.category)} precio={getPrice(category)} tipoPrecio={getPriceType(category)} />
           ))
         ) : (
           <h1>Loading categories...</h1>

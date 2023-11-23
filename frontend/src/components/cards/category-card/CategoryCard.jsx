@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "./categoryCard.css";
 
-const CategoryCard = ({ category, type, categoryName, precio }) => {
+const CategoryCard = ({ category, type, categoryName, precio, tipoPrecio }) => {
   // obtener al usuario segund owner de category
   const [owner, setOwner] = useState({});
   
@@ -64,10 +64,11 @@ const CategoryCard = ({ category, type, categoryName, precio }) => {
                   <b>Categoria: {categoryName}</b>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <b>Precio: ${precio}</b>
+                  <b>Tipo: {tipoPrecio}- Precio: ${precio}</b>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <b>Proveedor: {owner.name} {owner.surname} ({owner.email})</b>
+                  <b>Proveedor: {owner.name} {owner.surname} </b>
+                  <b>Telefono: {owner.phoneNumber} Email: {owner.email}</b>
                 </Typography>
               </>
             )}
