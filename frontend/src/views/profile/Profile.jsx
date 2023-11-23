@@ -19,9 +19,11 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem 
 } from "mdb-react-ui-kit";
+import ServiceCard from "./ServiceCard";
 
 export default function ProfilePage() {
   const [userData, setUserData] = useState({});
+  const [services, setServices] = useState();
   const navigate = useNavigate()
   const userId = localStorage.getItem("user_id");
   const access_token = localStorage.getItem("access_token");
@@ -44,22 +46,21 @@ export default function ProfilePage() {
   }, [userId, access_token]);
 
   const logout = async () => {
-    try {
-      const body = {
-        "refreshToken": localStorage.getItem("refresh_token")
-      }
-      const response = await axios.post(`http://localhost:3030/users/logout`, body);
+    const body = {
+      "refreshToken": localStorage.getItem("refresh_token")
+    }
+    await axios.post(`http://localhost:3030/users/logout`, body).then((response) => {
+        console.log(response)
+    }).catch((error) => {
+      console.error(error.message);
+    }).finally(() => {
       navigate("/login")
       localStorage.removeItem("refresh_token")
       localStorage.removeItem("access_token")
       localStorage.removeItem("expiration_token")
       localStorage.removeItem("user_id")
       localStorage.removeItem("user_email")
-      console.log(response)
-    } catch (error) {
-      console.error(error.message);
-      // alert(error.message)
-    }
+    })
   }
 
   return (
@@ -144,219 +145,11 @@ export default function ProfilePage() {
             </MDBCard>
 
             <MDBRow className="g-2">
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        Servicio
-                      </span>{" "}
-                      Brindado por mi
-                    </MDBCardText>
-                    <hr />
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Proveedor</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Yo
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Comprador</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Lautaro Greco
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Precio</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          $4533
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Estado</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Pagado y finalizado el dia 12/12/2020
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        Servicio
-                      </span>{" "}
-                      Brindado por mi
-                    </MDBCardText>
-                    <hr />
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Proveedor</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Yo
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Comprador</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Lucas Alvarez
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Precio</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          $4533
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Estado</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Pagado y finalizado el dia 12/12/2020
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        Servicio
-                      </span>{" "}
-                      Brindado por otro
-                    </MDBCardText>
-                    <hr />
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Proveedor</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Juan Lopez
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Comprador</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Yo
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Precio</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          $4533
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Estado</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Pagado y finalizado el dia 12/12/2020
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        Servicio
-                      </span>{" "}
-                      Brindado por otro
-                    </MDBCardText>
-                    <hr />
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Proveedor</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Juan Lopez
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Comprador</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Yo
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Precio</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          $4533
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                      <MDBCol sm="3">
-                        <MDBCardText style={{ fontSize: ".80rem" }}>Estado</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="9">
-                        <MDBCardText className="text-muted" style={{ fontSize: ".80rem" }}>
-                          Pagado y finalizado el dia 12/12/2020
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
+              {services && services.map((service) => {
+                <ServiceCard key={service._id} />
+              })}
             </MDBRow>
+
             <div>
               <MDBDropdown dropup>
                 <MDBDropdownToggle
@@ -378,19 +171,6 @@ export default function ProfilePage() {
                   <FontAwesomeIcon icon={faPlus} />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem>
-                  <Link
-                      to="/editService"
-                      style={{
-                        color: "#333",
-                        textDecoration: "none",
-                        padding: "10px 20px", 
-                        display: "block",     
-                      }}
-                    >
-                      Editar Servicio
-                    </Link>
-                  </MDBDropdownItem>
                   <MDBDropdownItem>
                     <Link 
                       to="/createService" 
