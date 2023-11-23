@@ -97,9 +97,11 @@ const Search = ({ param }) => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            style={{ marginRight: '30px' }}
           />
-          <button onClick={findCategories} type="button">
+          <button id="buscarBtn" onClick={findCategories} type="button">
             Buscar
+          <i class="fas fa-search"></i>
           </button>
         </div>
       </div>

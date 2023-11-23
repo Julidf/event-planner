@@ -31,3 +31,21 @@ input {
 input:focus {
     outline-color: white;
 }
+
+#buscarBtn {
+    padding: 8px 30px;
+    font-size: 16px; 
+    background-color: #3498db;
+    color: #ffffff; 
+    border: none;   
+    border-radius: 5px; 
+    cursor: pointer;
+
+    & i {
+        margin-left: 5px;
+    }
+}
+
+#buscarBtn:hover {
+    background-color: #2980b9; 
+}
