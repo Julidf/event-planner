@@ -1,0 +1,17 @@
+Dj Bodas:
+  Nombre: Dj bodas
+  Descripción: Musica profesional mezclada en vivo, contamos con multiples djs
+  Lugar: Argentina - Buenos Aires
+  Oferta:
+    Descripción oferta 1: Amplia gama musical, nos ajustamos a los generos que nos soliciten
+    Precio oferta 1: PorStaff - $30000
+
+Banda Totora:
+  Nombre: Banda Totora
+  Descripción: Banda para musicalizar tu evento, contamos con amplia gama de precios
+  Lugar: Argentina - Buenos Aires
+  Oferta:
+    Descripción oferta 1: Segmento de baile de 2 horas
+    Precio oferta 1: especial - $50000
+    Descripción oferta 2: Todo el evento
+    Precio oferta 2: especial - $75000

@@ -1,0 +1,19 @@
+Catering Delicias:
+  Nombre: Catering Delicias
+  Descripción: Catering profesional, incluye servicio a mesa
+  Lugar: Argentina - Buenos Aires
+  Oferta:
+    Descripción oferta 1: Tradicional Argentina
+    Precio oferta 1: PorPersona - $10000
+    Descripción oferta 2: Gourmet Elegante
+    Precio oferta 2: PorPersona - $20000
+
+Catering Roma:
+  Nombre: Catering Roma
+  Descripción: Catering para fiestas infantiles
+  Lugar: Argentina - Cordoba
+  Oferta:
+    Descripción oferta 1: Tradicional Infantil
+    Precio oferta 1: PorPersona - $10000
+    Descripción oferta 2: Gourmet
+    Precio oferta 2: PorPersona - $15000

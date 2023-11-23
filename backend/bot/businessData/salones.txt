@@ -1,0 +1,19 @@
+Salón Tortoni:
+  Nombre: Salón Tortoni
+  Descripción: Salón tradicional y bar histórico
+  Lugar: Argentina - Buenos Aires
+  Oferta:
+    Descripción oferta 1: sin recepcion
+    Precio oferta 1: special - $50000
+    Descripción oferta 2: con recepcion
+    Precio oferta 2: special - $100000
+
+Salon Roma:
+  Nombre: Salon Roma
+  Descripción: Salon para fiestas infantiles
+  Lugar: Argentina - Buenos Aires
+  Oferta:
+    Descripción oferta 1: Sin Luminaria
+    Precio oferta 1: special - $100000
+    Descripción oferta 2: Completo
+    Precio oferta 2: special - $200000
