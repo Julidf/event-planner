@@ -4,10 +4,19 @@ import "./landing.css"
 import Footer from '../../components/footer/Footer'
 import { Divider } from '@mui/material'
 import CategoryList from '../../components/category-list/CategoryList'
+import {
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem 
+} from "mdb-react-ui-kit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faRobot } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
 
   const [data, setData] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,10 +33,13 @@ const Landing = () => {
           });
   }, []);
 
+  {console.log(openModal)}
+
   return (
     <div>
       <Navbar/>
       <div className='landing-container'>
+
         <div className='banner'>
           <div className='banner-inner'>
             <div className='banner-text'>
@@ -76,6 +88,31 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <MDBDropdown style={{content:"none"}}>
+          <MDBDropdownToggle
+            className="btn-primary"
+            style={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              fontSize: "24px",
+              padding: "40px",
+              cursor: "pointer",
+              border: "none",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <FontAwesomeIcon icon={faRobot} />
+          </MDBDropdownToggle>
+          <MDBDropdownMenu>
+            <MDBDropdownItem>
+              <iframe src="http://localhost:8080/index2.html" frameborder="0" style={{ borderRadius: '30px' }}  scrolling="no" height={"700px"} width={"600px"}></iframe>
+            </MDBDropdownItem>
+          </MDBDropdownMenu>
+        </MDBDropdown>
         <Footer/>
       </div>
     </div>

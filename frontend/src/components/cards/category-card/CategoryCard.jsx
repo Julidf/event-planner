@@ -9,28 +9,34 @@ import "./categoryCard.css";
 const CategoryCard = ({ category, type, categoryName, precio }) => {
   // obtener al usuario segund owner de category
   const [owner, setOwner] = useState({});
+  
+  console.log(window.location.pathname)
 
   useEffect(() => {
-    fetch(`http://localhost:3030/users/${category.owner}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setOwner(data);
+    if (category.owner) {
+      fetch(`http://localhost:3030/users/${category.owner}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
       })
-      .catch((error) => {
-        console.error("Error al obtener el usuario:", error);
-      });
-  });
+        .then((response) => response.json())
+        .then((data) => {
+          setOwner(data);
+        })
+        .catch((error) => {
+          console.error("Error al obtener el usuario:", error);
+        });
+    }
+  }, []);
 
   return (
     <div
       onClick={() => {
-        window.location.href = `/${type}/${category.name.toLowerCase()}`;
+        if (window.location.pathname === "/") {
+          window.location.href = `/${type}/${category.name.toLowerCase()}`;
+        }
       }}
     >
       <Card
