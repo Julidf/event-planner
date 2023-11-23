@@ -72,13 +72,13 @@ services:
     networks:
       - api-network
     ports:
-      - '8082:8082'
+      - '8082:8081'
     depends_on:
       mongodb:
         condition: service_healthy
 
 volumes:
-  dbdata:
+  dbdata: 
 
 networks:
   api-network:
