@@ -1,13 +1,13 @@
-Fotografía Profesional HD:
-    Nombre: Fotografía Profesional HD
+Fotografia Profesional HD:
+    Nombre: Fotografia Profesional HD
     Descripción: Servicio de fotografía de alta calidad para capturar los momentos más especiales de tu evento. Contamos con fotógrafos expertos y equipo de última generación.
     Lugar: Argentina - Buenos Aires
     Oferta:
         Descripción oferta 1: Cobertura completa del evento
         Precio oferta 1: PorHora - $15000
 
-Estudio Fotográfico Éclat:
-    Nombre: Estudio Fotográfico Éclat
+Estudio Fotografico Éclat:
+    Nombre: Estudio Fotografico Éclat
     Descripción: Ofrecemos servicios de fotografía artística y elegante para eventos. Nuestro equipo creativo se especializa en capturar la esencia única de cada ocasión.
     Lugar: Argentina - Buenos Aires
     Oferta:
