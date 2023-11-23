@@ -50,7 +50,7 @@ const Landing = () => {
                 A tu alcance.
               </h2>
               <p>¡Crea Eventos Memorables con Facilidad! </p>
-              <p>Descubre, Planifica y Disfruta con Nosotros.</p>
+              <p>Hablá con nuesto <b>ChatBot</b> para obtener recomendaciones a tu medida! </p>
             </div>
             <div className='banner-picture'>
               <img src='./image-banner2.png' alt='Banner'/>

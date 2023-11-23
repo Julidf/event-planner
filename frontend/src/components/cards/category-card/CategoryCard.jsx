@@ -54,7 +54,7 @@ const CategoryCard = ({ category, type, categoryName, precio }) => {
             <Typography gutterBottom variant="h5" component="div">
               {category.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography sx={{marginBottom:"10px"}} variant="body2" color="text.secondary">
               {category.description}
             </Typography>
             <Typography variant="body2" color="text.secondary"></Typography>
