@@ -7,6 +7,26 @@ import { CardActionArea } from "@mui/material";
 import "./categoryCard.css";
 
 const CategoryCard = ({ category, type, categoryName, precio }) => {
+  // obtener al usuario segund owner de category
+  const [owner, setOwner] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:3030/users/${category.owner}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setOwner(data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener el usuario:", error);
+      });
+  });
+
   return (
     <div
       onClick={() => {
@@ -39,6 +59,9 @@ const CategoryCard = ({ category, type, categoryName, precio }) => {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <b>Precio: ${precio}</b>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <b>Proveedor: {owner.name} {owner.surname} ({owner.email})</b>
                 </Typography>
               </>
             )}
