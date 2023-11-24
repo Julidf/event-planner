@@ -34,7 +34,21 @@
 @media (max-width: 600px) {
     .about-container {
         min-height: 80vh;
-        padding: 2rem 2rem 0 2rem; 
+        padding: 0rem 2rem 0 2rem; 
         font-size: 0.9em;
+    }
+
+    .about-text {
+        & p {
+            font-size: 12px;
+        }
+
+        & h4 {
+            font-size: 14px;
+        }
+
+        & strong {
+            font-size: 12px;
+        }
     }
 }

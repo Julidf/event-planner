@@ -61,14 +61,14 @@ const CategoryCard = ({ category, type, categoryName, precio, tipoPrecio }) => {
             {categoryName != "" && precio != "" && (
               <>
                 <Typography variant="body2" color="text.secondary">
-                  <b>Categoria: {categoryName}</b>
+                  Categoria: {categoryName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <b>Tipo: {tipoPrecio}- Precio: ${precio}</b>
+                  Tipo: {tipoPrecio}- Precio: ${precio}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <b>Proveedor: {owner.name} {owner.surname} </b>
-                  <b>Telefono: {owner.phoneNumber} Email: {owner.email}</b>
+                  Proveedor: {owner.name} {owner.surname} 
+                  Telefono: {owner.phoneNumber} Email: {owner.email}
                 </Typography>
               </>
             )}
