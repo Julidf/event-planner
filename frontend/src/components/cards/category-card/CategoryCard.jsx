@@ -46,9 +46,9 @@ const CategoryCard = ({ category, type, categoryName, precio, tipoPrecio }) => {
         <CardActionArea sx={{}}>
           <CardMedia
             component="img"
-            height="140"
             image={category.picture}
             alt={category.name}
+            className="card-media"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">

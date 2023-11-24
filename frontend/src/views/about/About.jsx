@@ -1,8 +1,8 @@
-import React from 'react'
-import Navbar from '../../components/navbar/Navbar'
-import "./About.css"
-import { Divider } from '@mui/material'
-import Footer from '../../components/footer/Footer'
+import React from 'react';
+import Navbar from '../../components/navbar/Navbar';
+import { Divider } from '@mui/material';
+import Footer from '../../components/footer/Footer';
+import "./About.css";
 
 const About = () => {
   return (
@@ -12,7 +12,7 @@ const About = () => {
         <div className='about-inner'>
           <div className='about-text'>
             <h4>¿Quiénes somos?</h4>
-            <Divider sx={{borderColor: "white", borderWidth:"1px", marginBottom:"1rem"}} />
+            <Divider sx={{ borderColor: "white", borderWidth: "1px", marginBottom: "1rem" }} />
             <p>
               Somos un equipo comprometido con el desarrollo de una plataforma de alto impacto y 
               transformación social para el sector de la planificación de eventos.
@@ -46,7 +46,7 @@ const About = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

@@ -73,44 +73,28 @@ const Landing = () => {
               <div className='section'>
                 <img src='./hs_paso1.png' alt='one'></img>
                 <h2>Dinos que necesitas</h2>
-                <span>Cuéntanos sobre tu necesidad y nosotros lo pondremos a disposición de profesionales recomendados que te ayudarán a hacerlo realidad.</span>
+                <p>Cuéntanos sobre tu necesidad y nosotros lo pondremos a disposición de profesionales recomendados que te ayudarán a hacerlo realidad.</p>
               </div>
               <div className='section'>
                 <img src='./hs_paso2.png' alt='two'></img>
                 <h2>Recibe multiples propuestas</h2>
-                <span>En pocas horas recibirás las propuestas solicitadas. Conversa y evacúa dudas a través de nuestro chat. Compara reputación, experiencia y presupuestos.</span>
+                <p>En pocas horas recibirás las propuestas solicitadas. Conversa y evacúa dudas a través de nuestro chat. Compara reputación, experiencia y presupuestos.</p>
               </div>
               <div className='section'>
                 <img src='./hs_paso3.png' alt='three'></img>
                 <h2>Elige</h2>
-                <span>Cuando tengas toda la información, contrata de manera directa y abona sin intermediarios ni sobrecostos.</span>
+                <p>Cuando tengas toda la información, contrata de manera directa y abona sin intermediarios ni sobrecostos.</p>
               </div>
             </div>
           </div>
         </div>
         <MDBDropdown style={{content:"none"}}>
-          <MDBDropdownToggle
-            className="btn-primary"
-            style={{
-              position: "fixed",
-              bottom: "20px",
-              right: "20px",
-              fontSize: "24px",
-              padding: "40px",
-              cursor: "pointer",
-              border: "none",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex:9,
-            }}
-          >
+          <MDBDropdownToggle className="btn-primary fly-button">
             <FontAwesomeIcon icon={faRobot} />
           </MDBDropdownToggle>
           <MDBDropdownMenu>
             <MDBDropdownItem>
-              <iframe src="http://localhost:8080/index2.html" frameborder="0" style={{ borderRadius: '30px' }}  scrolling="no" height={"700px"} width={"600px"}></iframe>
+              <iframe src="http://localhost:8080/index2.html" className='iframe' frameborder="0" scrolling="no"></iframe>
             </MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>

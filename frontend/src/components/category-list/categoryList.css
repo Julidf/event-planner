@@ -20,3 +20,13 @@
         color: white;
     }
 }
+
+@media (max-width: 600px) {
+    .category-title {
+        margin-block: 1rem 0;
+        
+        & h1 {
+            font-size: 15px;
+        }
+    }
+}
