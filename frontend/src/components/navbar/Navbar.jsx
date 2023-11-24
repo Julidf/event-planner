@@ -25,7 +25,7 @@ const Navbar = () => {
       </div>
       <div className='navbar-auth'>
         <Link to={isLogged ? "/profile" : "/login"} className='auth-button login'>
-          👤ㅤMi Cuenta
+          👤 Mi Cuenta
         </Link>
       </div>
     </div>

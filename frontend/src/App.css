@@ -25,3 +25,9 @@ img {
 :root {
     --primary-margin: 15vw;
 }
+
+/* @media (max-width: 600px) {
+    :root {
+        --primary-margin: 8vw;
+    }
+} */

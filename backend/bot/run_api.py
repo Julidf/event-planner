@@ -20,8 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-GPT_MODEL = "gpt-3.5-turbo-0613"
-# GPT_MODEL = "gpt-4-1106-preview"
+# GPT_MODEL = "gpt-3.5-turbo-0613"
+GPT_MODEL = "gpt-4-1106-preview"
 
 
 @app.get("/")

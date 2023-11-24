@@ -1,23 +1,22 @@
 .navbar-container {
     background-color: #27374D;
     height: 10vh;
-    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 1rem
 }   
 
 .navbar-buttons {
     margin-left: auto;
-    gap: 50px;
-    column-gap: 50px;
+    display: flex;
 
     & a {
-        padding: 10px;
+        padding: 0.4rem;
         color: white;
-        margin-right: 20px;
+        margin-right: 1rem;
     }
     & a.active {
         color: #4A55A2;
@@ -30,6 +29,7 @@
 
 .navbar-auth {
     margin-right: var(--primary-margin);
+    display: flex;
 
     .auth-button {
         padding: 6px 30px;
@@ -57,9 +57,46 @@
 .navbar-icon {
     width: 50px;
     height: 50px;
-    margin-left: var(--primary-margin);;
+    margin-left: var(--primary-margin);
     
     & img {
         max-width: 100%
     }
+}
+
+@media (max-width: 600px) {
+    .navbar-container {
+        font-size: 0.7rem;
+        height: 6vh;
+    }
+
+    .navbar-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 0;
+    }
+
+    .navbar-buttons {
+        margin-left: 5px;
+        /* flex-grow: 1; */
+
+        & a {
+            margin-right: 0.6rem;
+        }
+    }
+
+    .navbar-auth {
+        display:flex; 
+        margin-right: 0;
+
+        & .login {
+            margin-right: 0;
+        }
+
+        & .auth-button {
+            padding: 4px 5px;
+            font-size: 10px;
+        }
+    }
+
 }

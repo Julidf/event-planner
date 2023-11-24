@@ -103,6 +103,7 @@ const Landing = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              zIndex:9,
             }}
           >
             <FontAwesomeIcon icon={faRobot} />

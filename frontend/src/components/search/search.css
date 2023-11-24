@@ -49,3 +49,11 @@ input:focus {
 #buscarBtn:hover {
     background-color: #2980b9; 
 }
+
+@media (max-width: 600px) {
+    .category-list-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
+}
