@@ -1,2 +1,2 @@
 # event-planner
-Proyecto educativo en equipo.
+Proyecto educativo en equipo. 
